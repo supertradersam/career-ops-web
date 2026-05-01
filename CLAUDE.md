@@ -1,3 +1,57 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Commands
+
+### Setup
+```bash
+npm install                        # install Node.js dependencies
+npx playwright install chromium    # install headless browser for PDF generation
+node doctor.mjs                    # validate all prerequisites (Node ≥18, playwright, files)
+```
+
+### Development & Testing
+```bash
+node test-all.mjs          # full test suite (syntax, scripts, liveness, dashboard build, data contract)
+node test-all.mjs --quick  # skip Go dashboard build (faster)
+node verify-pipeline.mjs   # check pipeline integrity (report headers, canonical states, dedup)
+node cv-sync-check.mjs     # warn if cv.md and profile.yml are out of sync
+```
+
+### Scripts (also exposed as npm scripts)
+```bash
+node scan.mjs                      # scan portals for new offers (zero LLM cost)
+node scan.mjs --dry-run            # preview without writing files
+node scan.mjs --company Cohere     # scan a single company
+node generate-pdf.mjs <in.html> <out.pdf>  # HTML → PDF via Playwright
+node merge-tracker.mjs             # merge batch/tracker-additions/*.tsv into applications.md
+node normalize-statuses.mjs        # normalize all statuses to canonical values
+node dedup-tracker.mjs             # remove duplicate rows from applications.md
+node update-system.mjs check       # check for career-ops updates
+node update-system.mjs apply       # apply update (preserves user data)
+node update-system.mjs rollback    # revert last update
+```
+
+### Dashboard (Go TUI)
+```bash
+cd dashboard && go build -o career-dashboard .   # build
+./career-dashboard                               # run (looks for applications.md in current dir)
+./career-dashboard --path /path/to/career-ops   # run pointing at a specific career-ops directory
+```
+
+### Batch Processing
+```bash
+# 1. Populate batch/batch-input.tsv with offer URLs (id, url, source, notes)
+cd batch && bash batch-runner.sh --dry-run     # preview pending offers
+cd batch && bash batch-runner.sh               # process all pending (sequential)
+cd batch && bash batch-runner.sh --parallel 2  # parallel workers
+cd batch && bash batch-runner.sh --retry-failed  # retry previously failed offers
+# After batch completes, merge-tracker.mjs runs automatically
+```
+
+---
+
 # Career-Ops -- AI Job Search Pipeline
 
 ## Origin
@@ -213,31 +267,6 @@ This system is designed to be customized by YOU (AI Agent). When the user asks y
 - "Update my profile" → edit `config/profile.yml`
 - "Change the CV template design" → edit `templates/cv-template.html`
 - "Adjust the scoring weights" → edit `modes/_profile.md` for user-specific weighting, or edit `modes/_shared.md` and `batch/batch-prompt.md` only when changing the shared system defaults for everyone
-
-### Language Modes
-
-Default modes are in `modes/` (English). Additional language-specific modes are available:
-
-- **German (DACH market):** `modes/de/` — native German translations with DACH-specific vocabulary (13. Monatsgehalt, Probezeit, Kündigungsfrist, AGG, Tarifvertrag, etc.). Includes `_shared.md`, `angebot.md` (evaluation), `bewerben.md` (apply), `pipeline.md`.
-- **French (Francophone market):** `modes/fr/` — native French translations with France/Belgium/Switzerland/Luxembourg-specific vocabulary (CDI/CDD, convention collective SYNTEC, RTT, mutuelle, prévoyance, 13e mois, intéressement/participation, titres-restaurant, CSE, portage salarial, etc.). Includes `_shared.md`, `offre.md` (evaluation), `postuler.md` (apply), `pipeline.md`.
-- **Japanese (Japan market):** `modes/ja/` — native Japanese translations with Japan-specific vocabulary (正社員, 業務委託, 賞与, 退職金, みなし残業, 年俸制, 36協定, 通勤手当, 住宅手当, etc.). Includes `_shared.md`, `kyujin.md` (evaluation), `oubo.md` (apply), `pipeline.md`.
-
-**When to use German modes:** If the user is targeting German-language job postings, lives in DACH, or asks for German output. Either:
-1. User says "use German modes" → read from `modes/de/` instead of `modes/`
-2. User sets `language.modes_dir: modes/de` in `config/profile.yml` → always use German modes
-3. You detect a German JD → suggest switching to German modes
-
-**When to use French modes:** If the user is targeting French-language job postings, lives in France/Belgium/Switzerland/Luxembourg/Quebec, or asks for French output. Either:
-1. User says "use French modes" → read from `modes/fr/` instead of `modes/`
-2. User sets `language.modes_dir: modes/fr` in `config/profile.yml` → always use French modes
-3. You detect a French JD → suggest switching to French modes
-
-**When to use Japanese modes:** If the user is targeting Japanese-language job postings, lives in Japan, or asks for Japanese output. Either:
-1. User says "use Japanese modes" → read from `modes/ja/` instead of `modes/`
-2. User sets `language.modes_dir: modes/ja` in `config/profile.yml` → always use Japanese modes
-3. You detect a Japanese JD → suggest switching to Japanese modes
-
-**When NOT to:** If the user applies to English-language roles, even at French, German, or Japanese companies, use the default English modes.
 
 ### Skill Modes
 

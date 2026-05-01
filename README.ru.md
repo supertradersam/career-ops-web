@@ -46,7 +46,7 @@ Career-Ops превращает любой AI-CLI в полноценный ко
 
 ```bash
 # 1. Клонируй и установи
-git clone https://github.com/santifer/career-ops.git
+git clone https://github.com/supertradersam/career-ops-web.git
 cd career-ops && npm install
 npx playwright install chromium   # Для генерации PDF
 

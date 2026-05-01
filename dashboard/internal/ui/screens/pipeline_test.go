@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/santifer/career-ops/dashboard/internal/model"
-	"github.com/santifer/career-ops/dashboard/internal/theme"
+	"github.com/supertradersam/career-ops-web/dashboard/internal/model"
+	"github.com/supertradersam/career-ops-web/dashboard/internal/theme"
 )
 
 func tabIndexForFilter(t *testing.T, filter string) int {

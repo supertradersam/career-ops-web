@@ -1,0 +1,258 @@
+.layout {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 3rem;
+}
+
+.top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.meta {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.meta .label {
+  color: var(--faint);
+  margin-right: 0.35rem;
+}
+
+.meta .sep {
+  margin: 0 0.45rem;
+  color: var(--faint);
+}
+
+.banner {
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.banner.err {
+  background: rgba(220, 80, 80, 0.12);
+  border: 1px solid rgba(220, 80, 80, 0.35);
+}
+
+.tabs {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  padding: 0.45rem 0.95rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.tab.on {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 380px);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1rem 1.25rem;
+}
+
+.panel.report .h2 {
+  margin-top: 0;
+}
+
+.h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.h2:first-child {
+  margin-top: 0;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.input,
+.select {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.input {
+  flex: 1;
+  min-width: 180px;
+}
+
+.table-wrap {
+  overflow: auto;
+  max-height: min(62vh, 720px);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.data th,
+.data td {
+  padding: 0.45rem 0.55rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.data th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-2);
+  z-index: 1;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.data tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.clamp {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+
+.chip.hot {
+  border-color: rgba(100, 200, 255, 0.45);
+  color: var(--accent);
+}
+
+.chip.skip {
+  opacity: 0.75;
+  border-style: dashed;
+}
+
+.chip.muted {
+  opacity: 0.65;
+}
+
+.chip.done {
+  border-color: rgba(120, 220, 160, 0.45);
+}
+
+.chip.error {
+  border-color: rgba(230, 120, 100, 0.5);
+}
+
+.chip.pending {
+  opacity: 0.85;
+}
+
+.linkish {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: var(--accent);
+  text-decoration: underline;
+  font: inherit;
+}
+
+.small {
+  font-size: 0.78rem;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.md {
+  margin-top: 0.65rem;
+  white-space: pre-wrap;
+  font-family:
+    ui-monospace,
+    'Cascadia Code',
+    'Source Code Pro',
+    Menlo,
+    monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  max-height: min(72vh, 900px);
+  overflow: auto;
+  padding-right: 0.25rem;
+}

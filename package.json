@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "AI-powered job search pipeline built on Claude Code",
   "scripts": {
+    "dev:api": "node api/server.mjs",
+    "dev:web": "npm run dev --prefix web",
+    "dev:dashboard-web": "concurrently -k \"npm run dev:api\" \"npm run dev:web\"",
+    "build:web": "npm run build --prefix web",
     "doctor": "node doctor.mjs",
     "verify": "node verify-pipeline.mjs",
     "normalize": "node normalize-statuses.mjs",
@@ -15,7 +19,8 @@
     "rollback": "node update-system.mjs rollback",
     "liveness": "node check-liveness.mjs",
     "scan": "node scan.mjs",
-    "gemini:eval": "node gemini-eval.mjs"
+    "gemini:eval": "node gemini-eval.mjs",
+    "nvidia:eval": "node nvidia-eval.mjs"
   },
   "keywords": [
     "ai",
@@ -28,7 +33,7 @@
   "homepage": "https://santifer.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/santifer/career-ops"
+    "url": "https://github.com/supertradersam/career-ops-web"
   },
   "license": "MIT",
   "dependencies": {
@@ -36,5 +41,8 @@
     "dotenv": "^16.4.5",
     "js-yaml": "^4.1.1",
     "playwright": "^1.58.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }

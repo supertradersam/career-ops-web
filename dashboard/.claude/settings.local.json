@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Read(//c/Users/sampa/Development/claudecode/career-ops/**)",
+      "Bash(node merge-tracker.mjs)"
+    ]
+  }
+}

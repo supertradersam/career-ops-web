@@ -79,7 +79,7 @@ career-ops 具有代理能力：Claude Code 透過 Playwright 瀏覽求職頁面
 
 ```bash
 # 1. 複製並安裝
-git clone https://github.com/santifer/career-ops.git
+git clone https://github.com/supertradersam/career-ops-web.git
 cd career-ops && npm install
 npx playwright install chromium   # PDF 生成所需
 
@@ -238,11 +238,11 @@ career-ops/
 
 ## Star 歷史
 
-<a href="https://www.star-history.com/?repos=santifer%2Fcareer-ops&type=timeline&legend=top-left">
+<a href="https://www.star-history.com/?repos=supertradersam%2Fcareer-ops-web&type=timeline&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=santifer/career-ops&type=timeline&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=santifer/career-ops&type=timeline&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=santifer/career-ops&type=timeline&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=supertradersam/career-ops-web&type=timeline&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=supertradersam/career-ops-web&type=timeline&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=supertradersam/career-ops-web&type=timeline&legend=top-left" />
  </picture>
 </a>
 
@@ -259,11 +259,11 @@ career-ops/
 
 ## 貢獻者
 
-<a href="https://github.com/santifer/career-ops/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=santifer/career-ops" />
+<a href="https://github.com/supertradersam/career-ops-web/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=supertradersam/career-ops-web" />
 </a>
 
-使用 career-ops 找到工作了嗎？[分享你的故事！](https://github.com/santifer/career-ops/issues/new?template=i-got-hired.yml)
+使用 career-ops 找到工作了嗎？[分享你的故事！](https://github.com/supertradersam/career-ops-web/issues/new?template=i-got-hired.yml)
 
 ## 授權條款
 
